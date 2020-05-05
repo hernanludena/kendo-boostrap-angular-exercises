@@ -1,0 +1,33 @@
+.encabezado{
+    width: 100%;
+    height: 100px;
+    background-color: lightblue; 
+    border: solid 1px white;
+}
+
+.menu{      
+    height: 600px;
+    background-color: yellow; 
+    border: solid 1px white;
+}
+
+.formulario1{   
+    height: 500px; 
+    width: 50%;
+    background-color: gray; 
+    border: solid 1px white;
+}
+
+.formulario2{   
+    height: 500px;
+    width: 50%;
+    background-color: brown; 
+    border: solid 1px white;
+}
+
+.botones{
+    height: 80px; 
+    background-color: red; 
+    border: solid 1px white;
+}
+

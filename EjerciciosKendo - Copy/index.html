@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css" />
+
+    <!-- Common Kendo UI Web CSS -->
+    <link href="css/styles/kendo.common.min.css" rel="stylesheet" />
+    <!-- Default Kendo UI Web theme CSS -->
+    <link href="css/styles/kendo.default.min.css" rel="stylesheet" />
+
+    <!-- jQuery JavaScript -->
+    <script src="js/libs/jquery.min.js"></script>
+
+    <!-- Angular JavaScript -->
+    <script src="js/libs/angular.js"></script>
+
+    <!-- Angular Route JavaScript -->
+    <script src="js/libs/angular-route.js"></script>
+
+    <!-- Kendo UI Web combined JavaScript -->
+    <script src="js/libs/kendo.web.min.js"></script>
+
+    <!-- Angular-Kendo JavaScript -->
+    <script src="js/libs/angular-kendo.min.js"></script>
+
+    <!-- Angular Translate JavaScript -->
+    <script src="js/libs/angular-translate.min.js"></script>
+
+    <!-- App JavaScripts -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/directives.js"></script>
+
+</head>
+
+<body>
+
+    <!-- 
+The following mask rules are available:
+
+0 - Digit. Accepts any digit between 0 and 9.
+9 - Digit or space. Accepts any digit between 0 and 9, plus space.
+# - Digit or space. Like 9 rule, but allows also (+) and (-) sings.
+L - Letter. Restricts input to letters a-z and A-Z. This rule is equivalent to [a-zA-Z] in regular expressions.
+? - Letter or space. Restricts input to letters a-z and A-Z. This rule is equivalent to [a-zA-Z] in regular expressions.
+& - Character. Accepts any character. The rule is equivalent to \S in regular expressions.
+C - Character or space. Accepts any character. The rule is equivalent to . in regular expressions.
+A - Alphanumeric. Accepts letters and digits only.
+a - Alphanumeric or space. Accepts letters, digits and space only.
+-->
+
+    <div class="k-content" ng-controller="ejercicio">
+        <label for="telefono">Teléfono:</label>
+        <input id="telefono" kendo-masked-text-box ng-model="telefono" k-mask="'(999) 000-0000'" />{{telefono}}
+        <label>UK postcode:</label>
+        <input kendo-masked-text-box ng-model="post" k-mask="'LLL LLL'" />{{post}}
+        <br>
+        <br>
+        <input type="button" value="Modificar Telefono" ng-click="modificar()" />
+
+        <kendo-button ng-click="modificar()">
+            Modificar Telefono
+        </kendo-button>
+
+
+        <select kendo-combo-box 
+                k-placeholder="'Seleccione un producto'" 
+                k-data-text-field="'nombre'" 
+                k-data-value-field="'codigo'"
+                k-data-source="productos" 
+                style="width: 300px;">
+        </select>
+
+        <div 
+             kendo-grid 
+             k-data-source="productos" 
+             k-pageable='true'>
+        </div>
+
+        <div 
+             kendo-grid 
+             k-data-source="dataSource1" 
+             k-pageable='true'>
+        </div>
+
+
+
+
+    </div>
+
+</body>
+
+</html>

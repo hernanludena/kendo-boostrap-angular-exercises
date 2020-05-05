@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="ModuloApp">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+    <link href="cobis/css/bootstrap.css" rel=stylesheet>
+</head>
+
+<body ng-app="ModuloApp">
+
+    <div ng-controller="ControladorUno">
+
+        <!--<label for="txtConcatenado" class="col-xs-12 col-md-6">{{nombre}} - {{apellido}} </label>-->
+
+
+        <input id="txtNombre" type="text" ng-model="nombre">
+        <input id="txtApellido" type="text" ng-model="apellido">
+
+        <br>
+
+        <cobis-concatenar></cobis-concatenar>
+
+
+        <br>
+        <cobis-concatenar2 cobis-prueba="nombre"></cobis-concatenar2>
+
+        <br>
+        <cobis-concatenar2 cobis-prueba="nombre" cobis-prueba2="pruebita"></cobis-concatenar2>
+
+
+        <br>
+        <cobis-concatenar3>Hola hernan</cobis-concatenar3>
+        <span cobis-concatenar3>HOlA PWEEE</span>
+
+
+        <br>
+        <label>Lista de Productos</label>
+        <br>
+        <div cobis-lista="productos" cobis-mostrar="nombre" class="test"></div>
+        <cobis-lista cobis-source="productos" cobis-mostrar="precio"></cobis-lista>
+        
+        <div cobis-lista="productos" cobis-mostrar="todos" class="test"></div>
+
+    </div>
+
+    </div>
+
+
+    </div>
+
+
+
+</body>
+
+</html>
+

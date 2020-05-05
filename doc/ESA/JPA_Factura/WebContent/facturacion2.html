@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="facturacion.js"></script>
+<script type="text/javascript" src="global.js"></script>
+</head>
+<body>
+<form name="facturacion">
+	<div>
+		<h2>Datos Factura</h2>
+		Número de Factura: <input type="text" name="numFactura" value="F001"
+			id="numFactura" /> <br> 
+	</div>
+	<br>
+	<div>
+		<h2>Cliente</h2>
+		Ingrese cédula: <input type="text" name="cedulaBusqueda"
+			id="cedulaBusqueda" value="171548"/> <input type="button" value="Buscar"
+			onclick="buscarPorCedula()" /> <br> Cédula: <input type="text"
+			name="cedula" id="cedula" /> Nombre: <input type="text"
+			name="nombre" id="nombre" /> Apellido: <input type="text"
+			name="apellido" id="apellido" /> <br> Direccion: <input
+			type="text" name="direccion" id="direccion" /> Telefono: <input
+			type="text" name="telefono" id="telefono" />
+	</div>
+
+	<div>
+		<h2>Nuevo Producto</h2>
+		Código: <input type="text" name="codigoBusqueda" id="codigoBusqueda" value="P001"/>
+		<input type="button" value="Buscar" onclick="buscarPorCodigo()" /> <br>
+		Código: <input type="text" name="codigo" id="codigo" /> Nombre: <input
+			type="text" name="nombreP" id="nombreP" /> <br> Precio: <input
+			type="text" name="precio" id="precio" />
+			<br> Categoria: <input
+			type="text" name="categoria" id="categoria" /> Cantidad: <input
+			type="number" name="cantidad" id="cantidad" /> <br> <input
+			type="button" value="Agregar" onclick="agregarProducto()" />
+
+
+		<table id="tabla">
+
+		</table>
+		
+		<input
+			type="button" value="Guardar Factura" onclick="guardarFactura()" />
+	</div>
+	</form>
+</body>
+</html>

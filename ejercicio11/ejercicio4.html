@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />    
+    <script type="text/javascript" src="angular.js"></script> 
+    <script type="text/javascript" src="controller.js"></script>  
+</head>
+    <body ng-app>
+    <!--todo el body va hacer procesado por angular-->
+        <div ng-controller="BienvenidaController">
+            <h3>Bienvenido {{nombre}}</h3>   <!-- forma parte del Scope-->
+            
+            <!-- un solo binding-->
+             <input type="button" value="Modificar" ng-click="modificar()"/>
+            <input type="text" value="{{nombre}}"/>
+            
+            <!-- binding de 2 lados-->
+             <input type="text" ng-model="nombre"/>
+        
+        </div>
+        
+<h3>Bienvenido {{nombre}}</h3> <!--esta fuera del controller forma parte del rootScope-->
+        
+       
+    </body>
+</html>
+
+
+

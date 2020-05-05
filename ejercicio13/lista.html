@@ -1,0 +1,16 @@
+<!--
+
+<ol>
+    <li>monto+descripcion</li> del arreglo de deudas con ng-repeat
+    <li>valor2</li>
+    <li>valor3</li>
+</ol>
+
+-->
+
+
+<ol>
+   <li ng-repeat="itemDeuda in deudas" ng-class-odd="'estiloImpar'" ng-class-even="'estiloPar'">
+       {{itemDeuda.monto}}-{{itemDeuda.descripcion}}
+    </li>                            
+</ol>

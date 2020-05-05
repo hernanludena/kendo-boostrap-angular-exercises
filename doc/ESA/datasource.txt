@@ -1,0 +1,8 @@
+ <datasource jndi-name="java:/jpaFacturaDS" pool-name="jpaFacturaDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:postgresql://localhost:5432/jpa_factura</connection-url>
+                    <driver>postgresql-9.2-1004.jdbc3.jar</driver>
+                    <security>
+                        <user-name>postgres</user-name>
+                        <password>root</password>
+                    </security>
+                </datasource>

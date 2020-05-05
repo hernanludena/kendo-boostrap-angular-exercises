@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+    <link href="cobis/css/bootstrap.css" rel=stylesheet>
+    <link href="estilos.css" rel=stylesheet>
+</head>
+
+<body ng-app="modulo1">
+    <!--todo el body va hacer procesado por angular-->
+   
+    <div class="container">
+        <div class="panel panel-primary col-md-6 col-md-offset-3 micolor">
+            <div class="panel-heading ">
+                <h4>COLECCIONES</h4>
+            </div>
+
+            <div class="panel-body">    
+                <form class="form-horizontal" name="p">                    
+                    <div ng-controller="DeudasController">  
+                        
+                         <div class="form-group">
+                            <label for="txtId" class="col-xs-12 col-md-6">Id:</label>                           
+                            <input id="txtId" type="text" class="col-xs-12 col-md-6" placeholder="Ingrese Id"  ng-model="obj.id"/>
+                        </div>
+                        <br>
+                         <div class="form-group">
+                            <label for="txtdescripcion" class="col-xs-12 col-md-6">Descripcion:</label>                           
+                            <input id="txtdescripcion" type="text" class="col-xs-12 col-md-6" placeholder="Ingrese Cédula" ng-model="obj.descripcion"/>
+                        </div>
+                        <br>
+                         <div class="form-group">
+                            <label for="txtmonto" class="col-xs-12 col-md-6">Monto:</label>                           
+                            <input id="txtmonto" type="number" class="col-xs-12 col-md-6" placeholder="Ingrese Cédula" ng-model="obj.monto">
+                        </div>
+                        <br>
+                         <div class="form-group">
+                            <label for="txtpagado" class="col-xs-12 col-md-6">Pagado:</label>                           
+                            <input id="txtpagado" type="checkbox" class="col-xs-12 col-md-6" placeholder="Ingrese Cédula" ng-model="obj.pagado">
+                        </div>
+                        <br>
+                        <input type = "button" class = "btn btn-default" value = "Aceptar" ng-click="guardar()"/>
+                        
+                       
+                        
+                          <div class="form-group colores" >
+                              
+                              <table class="table">  <!-- class="table table-striped" -->
+                                  <thead>
+                                      <tr>
+                                          <td>Indice</td>
+                                          <td>Id</td>
+                                          <td>Descripcion</td>
+                                          <td>Valor</td>
+                                          <td>Pagado</td>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                        <!--
+                                            --entero--
+                                            $index
+
+                                            --Boolenaos--
+                                            $first
+                                            $middle
+                                            $last 
+                                            $even
+                                            $odd-->
+                                            <!--itemDeuda:cualquier nombre  $index  -->
+                                          
+                                      <tr ng-repeat="itemDeuda in deudas" 
+                                          ng-class="$odd? 'estiloImpar' : 'estiloPar'">  
+                                          <td>{{$index+1}}</td>   
+                                          <td>{{itemDeuda.id}}</td>
+                                          <td>{{itemDeuda.descripcion}}</td>
+                                          <td>{{itemDeuda.monto}}</td>  
+                                          <td><input type="checkbox" ng-model="itemDeuda.pagado" ng-change="calcular()"/> </td> 
+                                          <td>{{itemDeuda.pagado}} </td>
+                                      </tr>
+                                      
+                                      <tr ng-repeat="itemDeuda in deudas" ng-class="$odd? 'estiloImpar' : 'estiloPar'"> 
+                                          <td ng-repeat="item in itemDeuda">
+                                              {{item}} 
+                                          </td>
+                                      </tr>
+                                      
+                                      
+                                      
+                                  </tbody>
+                              </table>                              
+                                                    
+                          </div>      
+                        
+                         <!-- <label  class="col-xs-12 col-md-6">Las Deudas Pagadas son:<h4> <span ng-class="evaluarSpan()" class="label label-default">{{sumaPagados}}</span></h4></label> -->
+                        
+             <label  class="col-xs-12 col-md-6">Las Deudas Pagadas son:<h4> <span ng-class="evaluarSpan()" class="label {{evaluarSpan()}}">{{sumaPagados}}</span></h4></label>
+                        <!--  <label  class="col-xs-12 col-md-6">Las Deudas Pagadas2 son: <span class="label label-warning">{{calcular2()}}</span></label>  -->
+                        
+                    </div>
+                </form>
+            </div>           
+
+        </div>
+    </div>  
+
+</body>
+
+</html>
+
+
+

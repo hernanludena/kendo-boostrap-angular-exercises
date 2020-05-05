@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="ModuloApp">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="controllers.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="angular-route.js"></script>
+    <script type="text/javascript" src="angular-translate.min.js"></script>
+    <link href="cobis/css/bootstrap.css" rel=stylesheet>
+</head>
+
+<body ng-controller=ControladorUno>
+
+    <div ng-controller=ControladorUno>
+        <!-- <span class="cobis-test:valor;"></span> -->
+
+
+
+        <input type="button" value="Edicion" ng-click="editar()" />
+        <input type="button" value="Lista" ng-click="listar()" />
+
+        <input type="button" value="{{'GUARDAR'|translate}}" ng-click="listar()" />
+
+        <span translate>CODIGO</span>
+        <button translate="GUARDAR"></button>
+
+
+        <input type="button" value="Cambiar Idioma" ng-click="idioma()" />
+
+        <!--DIRECTIVAS -->
+        <input ng-model="restaurante" />
+        <input ng:model="restaurante" />
+        <input ng_model="restaurante" />
+        <input ng-Model="restaurante" />
+        <input x-ng:model="restaurante" />
+
+        <input data-ng-model="restaurante" />
+        <ng-view></ng-view>
+
+
+    </div>
+
+    <!--<div ng-controller=ControladorUno> 
+         <cobis-test> </cobis-test>
+    </div>
+    
+     <div ng-controller=ControladorUno> 
+         <div cobis-test="valor2"></div>
+    </div>  -->
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div ng-controller=ControladorUno>
+        <div cobis-lista="productos" cobis-mostrar="nombre" class="test"></div>
+    </div>
+
+
+    <div ng-controller=ControladorUno>
+        <div cobis-lista="productos" cobis-mostrar="precio" class="test"></div>
+    </div>
+
+
+    <div ng-controller=ControladorUno>
+        <cobis-lista cobis-source="productos" cobis-mostrar="precio"></cobis-lista>
+
+    </div>
+
+
+    <div cobis-dos>
+        CONTENIDO VIEW
+    </div>
+
+    <div cobis-tres>
+        CONTENIDO VIEW 3
+        <div>
+            <input type="button" value="{{'GUARDAR'|translate}}" ng-click="listar()" />
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
+
+
+<!--
+
+ng-model
+ng:model
+ng_model
+ngModel
+
+
+-->

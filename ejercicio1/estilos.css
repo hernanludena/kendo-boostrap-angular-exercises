@@ -1,0 +1,46 @@
+.contenedor{
+    background-color: lightblue;    
+    width: 100%;   
+}
+
+
+/*pseudo selector
+desde una hoja de estilos agregamos contenido
+no es parte del arbol de componentes
+agregamos un contenido antes y despues del div 
+*/
+
+/*correciones*/
+
+.contenedor:before{  
+    content: "Hola conte!"; /*agregar contenido para evitar que se sobreponga contenido*/
+}
+
+.contenedor:after{  
+    clear: both;  /*para que un div contenga a otros*/
+    display: table;
+    content: "Adios conte!";
+    
+}
+
+
+
+.contenedor1{
+    background-color: lightgreen;
+    color: red;   
+    float: left;    
+    height: 100px;
+}
+
+
+.contenedor2{
+    background-color: brown;
+    color: red;
+    float: right;    
+    height: 100px;
+}
+
+/*.contenedor3{
+    background-color: yellow;
+    height: 100px;   
+}*/

@@ -1,0 +1,165 @@
+pseudo selector
+
+http://localhost:8080/ProyectoRestaurante/rest/restauranteService/insertar
+{"codigo":13,"nombre":"La Cascadita","telefono":"2581919"}
+
+{"nombre":"La Tulpa2","telefono":"2567890","categoria":{"codigo":1,"nombre":"Cat 1"}}
+
+http://localhost:8080/ProyectoRestaurante/rest/restauranteService/recuperarTodos
+[{"codigo":1,"nombre":"La Tulpa","telefono":"2567890","categoria":{"codigo":1,"nombre":"Cat 1"}}]
+
+
+
+---ng-if---
+ <table class="table table-striped">
+                                  <thead>
+                                      <tr>
+                                          <td>Id</td>
+                                          <td>Descripcion</td>
+                                          <td>Valor</td>
+                                          <td>Pagado</td>
+                                          <td>pagado2</td>
+                                          <td>Habilitado</td>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr ng-repeat="itemDeuda in deudas">
+                                          <td ng-style="{'background-color':colorNew}">{{itemDeuda.id}}</td>
+                                          <td>{{itemDeuda.descripcion}} 
+                                              <span ng-hide="itemDeuda.pagado">(DEBO)</span>  <span ng-show="itemDeuda.pagado">(PAGADO)</span>
+                                          </td>
+                                          <td>{{itemDeuda.monto}}
+                                              <span ng-if="!itemDeuda.pagado">(DEBO)</span>  <span ng-if="itemDeuda.pagado">(PAGADO)</span>
+                                          </td>  
+                                          <td><input type="checkbox" ng-model="itemDeuda.pagado" ng-change="calcular()" ng-disabled="obj.habilitar"/> </td> 
+                                          <td ng-style="{'background-color':'gray'}">{{itemDeuda.pagado}} </td>  
+                                          
+                                          <!--
+                                            --se solventa los boolenaos--
+                                            ng-disabled
+                                            ng-checked
+                                            ng-readonly
+                                            ng-selected
+                                            -->
+                                      </tr>
+                                  </tbody>
+                              </table>           
+
+--ng-if---
+-------------------------------------------------
+
+--arreglo---
+ $scope.deudas = [
+        {id:1,descripcion:"casa",monto:120,pagado:true},
+        {id:2,descripcion:"auto",monto:20,pagado:true},
+        {id:3,descripcion:"terreno",monto:10,pagado:false} 
+    ];
+--arreglo---
+-------------------------------------------------
+
+<h3>Bienvenido {{nombre}}</h3> <!--esta fuera del controller forma parte del rootScope-->
+-------------------------------------------------
+
+
+<input type="checkbox" ng-model="itemDeuda.pagado" ng-change="calcular()"/>
+<input type="button" value="Modificar" ng-click="modificar()"/>
+<input type="text" ng-model="nombre"/>
+
+
+-------------------------------------------------
+
+<tr ng-repeat="itemDeuda in deudas" ng-class="$odd? 'estiloImpar' : 'estiloPar'"> 
+                                          <td ng-repeat="item in itemDeuda">
+                                              {{item}} 
+                                          </td>
+                                      </tr>
+------------------------------------
+<div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Formulario</h4>
+            </div>
+
+            <div class="panel-body">
+
+                <form class="form-horizontal" name="p">
+
+                    <div class="form-group">
+                        <label for="txtcedula" class="col-xs-12 col-md-6">Cedula:</label>                       
+                        <input id="txtcedula" type="text" class="col-xs-12 col-md-6" placeholder="Ingrese Cédula" />
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="txtnombre" class="col-xs-12 col-md-6">Nombre:</label>                       
+                        <input id="txtnombre" type="text" class="col-xs-12 col-md-6" placeholder="Ingrese Nombre" />
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="txtapellido" class="col-xs-12 col-md-6">Apellido:</label>                       
+                        <input id="txtapellido" type="text" class="col-xs-12 col-md-6" placeholder="Ingrese Apellido" />
+                    </div>
+
+		    <br>
+		    <div class="form-group">     
+                           <input type="button" value="Sumar" ng-click="sumar()" class="col-md-offset-4" />
+			   <input type = "button" class = "btn btn-default" value = "Aceptar" ng-click="guardar()"/>
+                    </div> 
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+----------------------------------------------
+                     
+    <span ng-bind-template="
+        Pagado: {{calcular2()}}
+         Adeudado:  {{totalizarDeuda()}}"></span>
+-------------------------------------------------
+
+---for---
+ $scope.calcular = function(){
+         $scope.sumaPagados=0;
+       /* for(var i=0;i<=this.deudas.length;i++){
+        if(this.deudas[i].pagado == true)
+            $scope.sumaPagados += this.deudas[i].monto;
+        }*/
+        angular.forEach($scope.deudas,function(valor,indice){
+             if(valor.pagado == true)
+                $scope.sumaPagados += valor.monto;
+   
+        });
+         
+    };
+-------------------------------------------------
+app.controller(
+    "restauranteController", function ($scope, $http) {
+  $scope.recuperarTodos = function (){
+            $http.get("http://localhost:8080/ProyectoRestaurante/rest/restauranteService/recuperarTodos").success(
+                function(data,status){
+                    console.log(status);
+                    $scope.restaurantes = data;
+                }).error(
+        		 function(status){
+                     console.log(status);
+                     alert("horror");
+                 }        		 
+         );
+        };
+------------------------------------------------
+$scope.editar = function (rest) {
+            $scope.mostrar = "edicion";
+            document.getElementById("txtCodigo").value = rest.codigo;
+            document.getElementById("txtNombre").value = rest.nombre;
+            document.getElementById("txtTelefono").value = rest.telefono;
+            
+            $scope.restaurant1.codigo = rest.codigo;
+            $scope.restaurant1.nombre = rest.nombre;
+            $scope.restaurant1.telefono = rest.telefono;
+            
+            
+            
+        };
+

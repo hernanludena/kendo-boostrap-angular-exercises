@@ -1,0 +1,31 @@
+<table class="table">
+    <!-- class="table table-striped" -->
+    <thead>
+        <tr>
+            <td>Indice</td>
+            <td>Id</td>
+            <td>Descripcion</td>
+            <td>Valor</td>
+            <td>Pagado</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr ng-repeat="itemDeuda in deudas" ng-mouseenter="handler($event)">
+            <!--ng-class="$odd? 'estiloImpar' : 'estiloPar'">  -->
+            <td>{{$index+1}}</td>
+            <td>{{itemDeuda.id}}</td>
+            <td>{{itemDeuda.descripcion}}</td>
+            <td>{{itemDeuda.monto}}</td>
+            <td>
+                <input type="checkbox" ng-model="itemDeuda.pagado" ng-change="calcular()" />
+            </td>
+            <td>{{itemDeuda.pagado}}</td>
+        </tr>
+
+
+    </tbody>
+</table>
+
+
+
